@@ -81,7 +81,7 @@ public class Filters{
     }
     public String stark(JSONArray optionsArr) {
 
-		ThreadPolicy tp = ThreadPolicy.LAX;
+		StrictMode.ThreadPolicy tp = StrictMode.ThreadPolicy.LAX;
 		StrictMode.setThreadPolicy(tp);
 		
         // SET FILE PATH
