@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="co.uk.ultimateweb.test"
+        id="co.uk.ultimateweb.imagefilter"
         version="1.0.0">
 
   <engines>
     <engine name="cordova" version=">=3.0.0" />
   </engines>
 
-  <name>PluginTest</name>
+  <name>ImageFilter</name>
 
-  <description>Plugin Test Base</description>
+  <description>Android Image Filter Test</description>
 
   <author>Ultimateweb</author>
 
-  <js-module src="www/EchoPlugin.js" name="Echo">
-    <clobbers target="cordova.plugins.echo" />
+  <js-module src="www/ImageFilter.js" name="ImageFilter">
+    <clobbers target="cordova.plugins.imagefilter" />
   </js-module>
 
   <!-- iOS -->
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
-      <feature name="Echo">
-        <param name="ios-package" value="Echo" />
+      <feature name="ImageFilter">
+        <param name="ios-package" value="ImageFilter" />
       </feature>
     </config-file>
 
-    <header-file src="src/ios/Echo.h" />
-    <source-file src="src/ios/Echo.m" />
+    <header-file src="src/ios/ImageFilter.h" />
+    <source-file src="src/ios/ImageFilter.m" />
   </platform>
 
   <!-- Android -->
   <platform name="android">
-    <source-file src="src/android/Echo.java" target-dir="src/co/uk/ultimateweb/test" />
+    <source-file src="src/android/ImageFilter.java" target-dir="src/co/uk/ultimateweb/imagefilter" />
 
     <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="Echo">
-        <param name="android-package" value="co.uk.ultimateweb.test.Echo" />
+      <feature name="ImageFilter">
+        <param name="android-package" value="co.uk.ultimateweb.imagefilter.ImageFilter" />
       </feature>
     </config-file>
   </platform>
