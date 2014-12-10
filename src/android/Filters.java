@@ -114,16 +114,7 @@ public class Filters{
             try {
 				URLConnection ucon = url.openConnection();
 				InputStream is = ucon.getInputStream();
-				
-				if(1 == 1) {
-					return "got to new here 4? +" + imageURL;
-				}
-
                 Bitmap bmp = BitmapFactory.decodeStream(is);//BitmapFactory.decodeFile(imageURL);
-				
-				if(1 == 1) {
-					return "got to new here 5? +" + imageURL;
-				}
 				
                 if(bmp.getHeight() >= 655 || bmp.getWidth()>=655){
                     bmp = Bitmap.createBitmap(bmp,0,0,655,655);
