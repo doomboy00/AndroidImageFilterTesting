@@ -103,9 +103,8 @@ public class Filters{
 
         // APPLY FILTER
 
-
         // create image bitmap
-        Bitmap bmp = BitmapFactory.decodeFile(imageURL);
+        Bitmap bmp = BitmapFactory.decodeStream(new java.net.URL(imageURL).openStream());//BitmapFactory.decodeFile(imageURL);
         if(bmp.getHeight() >= 655 || bmp.getWidth()>=655){
             bmp = Bitmap.createBitmap(bmp,0,0,655,655);
         }
