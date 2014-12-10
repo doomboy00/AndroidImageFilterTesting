@@ -97,10 +97,6 @@ public class Filters{
         catch (Exception e){
             return e.getMessage();
         }
-		
-		if(1 == 1) {
-			return "got to new here 2?";
-		}
 
         // GET URL TO IMAGE
         final JSONObject options = optionsArr.optJSONObject(0);
@@ -111,6 +107,10 @@ public class Filters{
         // create image bitmap
         try{
             URL url = new URL(imageURL);
+
+			if(1 == 1) {
+				return "got to new here 3?";
+			}
 
             try {
                 InputStream input = url.openStream();
