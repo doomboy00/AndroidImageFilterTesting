@@ -81,6 +81,9 @@ public class Filters{
     }
     public String stark(JSONArray optionsArr) {
 
+		ThreadPolicy tp = ThreadPolicy.LAX;
+		StrictMode.setThreadPolicy(tp);
+		
         // SET FILE PATH
         String filePath = "";
         File path = new File(Environment.getExternalStorageDirectory()+"/ImageFilter/");
