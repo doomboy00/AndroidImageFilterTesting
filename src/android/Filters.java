@@ -9,6 +9,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.*;
 import android.os.*;
 
+import co.uk.ultimateweb.imagefilter.*;
+
 public class Filters{
 
     public String none(JSONArray optionsArr) {

@@ -7,13 +7,13 @@ import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import co.uk.ultimateweb.imagefilter.Filters;
+import co.uk.ultimateweb.imagefilter.*;
 
 public class ImageFilter extends CordovaPlugin {
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
         if (action.equals("echo")) {
-            String message = args.getString(0);
+            String message = data.getString(0);
             return this.echo(message, callbackContext);
         }
 
