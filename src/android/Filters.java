@@ -183,7 +183,7 @@ public class Filters{
                     return e.getMessage();
                 }
             } catch(IOException ex) {
-                return ex.getMessage();
+                return "some error = cause: " + ex.getCause() + ' msg = ' + ex.getMessage();
             }
         }catch(MalformedURLException ex) {
             return ex.getMessage();
