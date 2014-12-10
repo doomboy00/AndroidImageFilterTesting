@@ -110,12 +110,6 @@ public class Filters{
 
             try {
 				URLConnection ucon = url.openConnection();
-				
-				if(1 == 1) {
-					return "got to new here 3? +" + imageURL;
-				}
-
-				
 				InputStream is = ucon.getInputStream();
 				
 				if(1 == 1) {
@@ -194,8 +188,8 @@ public class Filters{
                 } catch (Exception e) {
                     return e.getMessage();
                 }
-            } catch(IOException ex) {
-                return "some error = cause: " + ex.getCause() + " msg = " + ex.getMessage();
+            } catch(Exception ex) {
+                return ex.toString();
             }
         }catch(MalformedURLException ex) {
             return ex.getMessage();
