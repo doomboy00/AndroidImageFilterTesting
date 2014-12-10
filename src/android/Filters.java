@@ -86,10 +86,6 @@ public class Filters{
         File path = new File(Environment.getExternalStorageDirectory()+"/ImageFilter/");
         File NBBfile = new File(path, "tmp.jpg");
 
-		if(1 == 1) {
-			return "got to new here?";
-		}
-
         // CREATE FOLDERS IF NEEDED
         try{
             boolean success = false;
@@ -101,6 +97,10 @@ public class Filters{
         catch (Exception e){
             return e.getMessage();
         }
+		
+		if(1 == 1) {
+			return "got to new here 2?";
+		}
 
         // GET URL TO IMAGE
         final JSONObject options = optionsArr.optJSONObject(0);
