@@ -32,11 +32,11 @@ public class ImageFilter extends CordovaPlugin {
         if(action.equalsIgnoreCase("stark")){
 			 callbackContext.success("got here");
 			 return true;
-            String fileInfo = filters.stark(data);
+            /*String fileInfo = filters.stark(data);
             // result = new PluginResult(Status.OK, fileInfo);
 
             result = true;
-            callbackContext.success(fileInfo);
+            callbackContext.success(fileInfo);*/
         }
         if(action.equalsIgnoreCase("sunnyside")){
             String fileInfo = filters.sunnyside(data);
