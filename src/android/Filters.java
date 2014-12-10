@@ -178,7 +178,6 @@ public class Filters{
                 } catch (Exception e) {
                     return e.getMessage();
                 }
-                return filePath;
             } catch(IOException ex) {
                 return ex.getMessage();
             }
