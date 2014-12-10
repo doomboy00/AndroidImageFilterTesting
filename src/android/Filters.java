@@ -110,7 +110,7 @@ public class Filters{
 
             try {
 				if(1 == 1) {
-					return "got to new here 3?";
+					return "got to new here 3? +" + imageURL;
 				}
                 InputStream input = new BufferedInputStream(url.openStream());
 
