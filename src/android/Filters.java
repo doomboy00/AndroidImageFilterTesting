@@ -179,7 +179,7 @@ public class Filters{
                     return e.printStackTrace();
                 }
                 return filePath;
-            } case(IOException ex) {
+            } catch(IOException ex) {
                 return ex.getMessage();
             }
         }catch(MalformedURLException ex) {
