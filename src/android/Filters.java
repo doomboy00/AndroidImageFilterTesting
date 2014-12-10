@@ -110,6 +110,12 @@ public class Filters{
 
             try {
 				URLConnection ucon = url.openConnection();
+				
+				if(1 == 1) {
+					return "got to new here 3? +" + imageURL;
+				}
+
+				
 				InputStream is = ucon.getInputStream();
 				
 				if(1 == 1) {
