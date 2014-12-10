@@ -4,6 +4,12 @@ Copyright (c) 2012 Drew Dahlman MIT LICENSE
 
 var ImageFilter = function () {};
 
+ImageFilter.prototype.echo = function(text, success) {
+    cordova.exec(success, function(err) {
+        callback('Nothing to echo.' + err);
+    }, "ImageFilter", "echo", [text]);
+}
+
 ImageFilter.prototype.clean = function (done, error, options) {
 	var defaults = {
         image: '',
@@ -81,5 +87,7 @@ ImageFilter.install = function () {
   window.plugins.ImageFilter = new ImageFilter();
   return window.plugins.ImageFilter;
 };
+
+var imagefilter = new ImageFilter();
 
 cordova.addConstructor(ImageFilter.install);
