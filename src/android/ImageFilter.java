@@ -58,6 +58,9 @@ public class ImageFilter extends CordovaPlugin {
             result = true;
             callbackContext.success(fileInfo);
         }
+		
+		if(!result)
+            callbackContext.error("Expected one non-empty string argument.");
 
         return result;
     }
