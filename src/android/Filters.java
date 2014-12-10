@@ -95,7 +95,7 @@ public class Filters{
             }
         }
         catch (Exception e){
-            e.printStackTrace();
+            return e.printStackTrace();
         }
 
         // GET URL TO IMAGE
@@ -105,77 +105,86 @@ public class Filters{
         // APPLY FILTER
 
         // create image bitmap
-        URL url = new URL(imageURL);
-        InputStream input = url.openStream();
+        try{
+            URL url = new URL(imageURL);
 
-        Bitmap bmp = BitmapFactory.decodeStream(input);//BitmapFactory.decodeFile(imageURL);
-        if(bmp.getHeight() >= 655 || bmp.getWidth()>=655){
-            bmp = Bitmap.createBitmap(bmp,0,0,655,655);
+            try {
+                InputStream input = url.openStream();
+
+                Bitmap bmp = BitmapFactory.decodeStream(input);//BitmapFactory.decodeFile(imageURL);
+                if(bmp.getHeight() >= 655 || bmp.getWidth()>=655){
+                    bmp = Bitmap.createBitmap(bmp,0,0,655,655);
+                }
+                else {
+                    bmp = Bitmap.createBitmap(bmp);
+                }
+
+                // create image canvas
+                Bitmap none = Bitmap.createBitmap(bmp);
+
+                Canvas canvas = new Canvas(none);
+                canvas.drawBitmap(none,0,0,null);
+
+                // BORDER
+                //Context context = MyApplication.getAppContext();
+                //Bitmap border = BitmapFactory.decodeResource(context.getResources(),R.drawable.painter);
+
+                //canvas.drawBitmap(border,0,0,null);
+
+                Paint spaint = new Paint();
+                ColorMatrix scm = new ColorMatrix();
+
+                scm.setSaturation(0);
+                final float m[] = scm.getArray();
+                final float c = 1;
+                scm.set(new float[] {
+                        m[ 0] * c, m[ 1] * c, m[ 2] * c, m[ 3] * c, m[ 4] * c + 15,
+                        m[ 5] * c, m[ 6] * c, m[ 7] * c, m[ 8] * c, m[ 9] * c + 8,
+                        m[10] * c, m[11] * c, m[12] * c, m[13] * c, m[14] * c + 10,
+                        m[15]    , m[16]    , m[17]    , m[18]    , m[19] });
+
+                spaint.setColorFilter(new ColorMatrixColorFilter(scm));
+                Matrix smatrix = new Matrix();
+                canvas.drawBitmap(none, smatrix, spaint);
+
+                Paint paint = new Paint();
+                ColorMatrix cm = new ColorMatrix();
+
+                cm.set(new float[] {
+                        1, 0, 0, 0, -90,
+                        0, 1, 0, 0, -90,
+                        0, 0, 1, 0, -90,
+                        0, 0, 0, 1, 0 });
+                paint.setColorFilter(new ColorMatrixColorFilter(cm));
+                Matrix matrix = new Matrix();
+                canvas.drawBitmap(none, matrix, paint);
+
+
+                // SAVE IMAGE
+                try {
+
+                    // OUTPUT STREAM
+                    FileOutputStream out = new FileOutputStream(NBBfile);
+                    none.compress(Bitmap.CompressFormat.JPEG, 100, out);
+
+                    // GET FILE PATH
+                    Uri uri = Uri.fromFile(NBBfile);
+                    filePath = uri.toString();
+
+                    // RETURN FILE PATH
+                    return filePath;
+
+
+                } catch (Exception e) {
+                    return e.printStackTrace();
+                }
+                return filePath;
+            } case(IOException ex) {
+                return ex.getMessage();
+            }
+        }catch(MalformedURLException ex) {
+            return ex.getMessage();
         }
-        else {
-            bmp = Bitmap.createBitmap(bmp);
-        }
-
-        // create image canvas
-        Bitmap none = Bitmap.createBitmap(bmp);
-
-        Canvas canvas = new Canvas(none);
-        canvas.drawBitmap(none,0,0,null);
-
-        // BORDER
-        //Context context = MyApplication.getAppContext();
-        //Bitmap border = BitmapFactory.decodeResource(context.getResources(),R.drawable.painter);
-
-        //canvas.drawBitmap(border,0,0,null);
-
-        Paint spaint = new Paint();
-        ColorMatrix scm = new ColorMatrix();
-
-        scm.setSaturation(0);
-        final float m[] = scm.getArray();
-        final float c = 1;
-        scm.set(new float[] {
-                m[ 0] * c, m[ 1] * c, m[ 2] * c, m[ 3] * c, m[ 4] * c + 15,
-                m[ 5] * c, m[ 6] * c, m[ 7] * c, m[ 8] * c, m[ 9] * c + 8,
-                m[10] * c, m[11] * c, m[12] * c, m[13] * c, m[14] * c + 10,
-                m[15]    , m[16]    , m[17]    , m[18]    , m[19] });
-
-        spaint.setColorFilter(new ColorMatrixColorFilter(scm));
-        Matrix smatrix = new Matrix();
-        canvas.drawBitmap(none, smatrix, spaint);
-
-        Paint paint = new Paint();
-        ColorMatrix cm = new ColorMatrix();
-
-        cm.set(new float[] {
-                1, 0, 0, 0, -90,
-                0, 1, 0, 0, -90,
-                0, 0, 1, 0, -90,
-                0, 0, 0, 1, 0 });
-        paint.setColorFilter(new ColorMatrixColorFilter(cm));
-        Matrix matrix = new Matrix();
-        canvas.drawBitmap(none, matrix, paint);
-
-
-        // SAVE IMAGE
-        try {
-
-            // OUTPUT STREAM
-            FileOutputStream out = new FileOutputStream(NBBfile);
-            none.compress(Bitmap.CompressFormat.JPEG, 100, out);
-
-            // GET FILE PATH
-            Uri uri = Uri.fromFile(NBBfile);
-            filePath = uri.toString();
-
-            // RETURN FILE PATH
-            return filePath;
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return filePath;
     }
     public String sunnyside(JSONArray optionsArr) {
 
