@@ -3,6 +3,7 @@ package co.uk.ultimateweb.imagefilter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.*;
+import java.net.*;
 import android.net.Uri;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -104,7 +105,10 @@ public class Filters{
         // APPLY FILTER
 
         // create image bitmap
-        Bitmap bmp = BitmapFactory.decodeStream(new java.net.URL(imageURL).openStream());//BitmapFactory.decodeFile(imageURL);
+        URL url = new URL(imageURL);
+        InputStream input = url.openStream();
+
+        Bitmap bmp = BitmapFactory.decodeStream(input);//BitmapFactory.decodeFile(imageURL);
         if(bmp.getHeight() >= 655 || bmp.getWidth()>=655){
             bmp = Bitmap.createBitmap(bmp,0,0,655,655);
         }
