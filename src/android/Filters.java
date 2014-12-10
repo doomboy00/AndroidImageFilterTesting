@@ -109,12 +109,19 @@ public class Filters{
             URL url = new URL(imageURL);
 
             try {
+				URLConnection ucon = url.openConnection();
+				InputStream is = ucon.getInputStream();
+				
 				if(1 == 1) {
-					return "got to new here 3? +" + imageURL;
+					return "got to new here 4? +" + imageURL;
 				}
-                InputStream input = new BufferedInputStream(url.openStream());
 
-                Bitmap bmp = BitmapFactory.decodeStream(input);//BitmapFactory.decodeFile(imageURL);
+                Bitmap bmp = BitmapFactory.decodeStream(is);//BitmapFactory.decodeFile(imageURL);
+				
+				if(1 == 1) {
+					return "got to new here 5? +" + imageURL;
+				}
+				
                 if(bmp.getHeight() >= 655 || bmp.getWidth()>=655){
                     bmp = Bitmap.createBitmap(bmp,0,0,655,655);
                 }
