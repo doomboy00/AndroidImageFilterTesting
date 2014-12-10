@@ -108,12 +108,12 @@ public class Filters{
         try{
             URL url = new URL(imageURL);
 
-			if(1 == 1) {
-				return "got to new here 3?";
-			}
-
             try {
                 InputStream input = url.openStream();
+
+				if(1 == 1) {
+					return "got to new here 4?";
+				}
 
                 Bitmap bmp = BitmapFactory.decodeStream(input);//BitmapFactory.decodeFile(imageURL);
                 if(bmp.getHeight() >= 655 || bmp.getWidth()>=655){
