@@ -86,6 +86,11 @@ public class Filters{
         File path = new File(Environment.getExternalStorageDirectory()+"/ImageFilter/");
         File NBBfile = new File(path, "tmp.jpg");
 
+		if(1 == 1) {
+			callbackContext.success(message);
+            return true;
+		}
+
         // CREATE FOLDERS IF NEEDED
         try{
             boolean success = false;
