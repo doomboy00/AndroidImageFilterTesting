@@ -32,6 +32,7 @@
 
   <!-- Android -->
   <platform name="android">
+    <source-file src="src/android/Filters.java" target-dir="src/co/uk/ultimateweb/imagefilter" />
     <source-file src="src/android/ImageFilter.java" target-dir="src/co/uk/ultimateweb/imagefilter" />
 
     <config-file target="res/xml/config.xml" parent="/*">
