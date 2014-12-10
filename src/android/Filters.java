@@ -87,7 +87,7 @@ public class Filters{
         File NBBfile = new File(path, "tmp.jpg");
 
 		if(1 == 1) {
-			callbackContext.success(message);
+			callbackContext.success("got to new here?");
             return true;
 		}
 
