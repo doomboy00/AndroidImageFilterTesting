@@ -95,7 +95,7 @@ public class Filters{
             }
         }
         catch (Exception e){
-            return e.printStackTrace();
+            return e.getMessage();
         }
 
         // GET URL TO IMAGE
@@ -176,7 +176,7 @@ public class Filters{
 
 
                 } catch (Exception e) {
-                    return e.printStackTrace();
+                    return e.getMessage();
                 }
                 return filePath;
             } catch(IOException ex) {
