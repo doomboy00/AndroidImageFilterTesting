@@ -109,11 +109,10 @@ public class Filters{
             URL url = new URL(imageURL);
 
             try {
-                InputStream input = new BufferedInputStream(url.openStream());
-
 				if(1 == 1) {
-					return "got to new here 4?";
+					return "got to new here 3?";
 				}
+                InputStream input = new BufferedInputStream(url.openStream());
 
                 Bitmap bmp = BitmapFactory.decodeStream(input);//BitmapFactory.decodeFile(imageURL);
                 if(bmp.getHeight() >= 655 || bmp.getWidth()>=655){
